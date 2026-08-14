@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison-homelab/homelab-hdmi-switch
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-hdmi-switch-k8s
     targetRevision: HEAD
     path: manifests
   destination:
