@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison/homelab-home-assistant
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-home-assistant
     targetRevision: HEAD
     path: manifests
   destination:

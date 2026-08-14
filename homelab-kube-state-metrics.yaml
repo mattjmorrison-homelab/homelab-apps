@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison/homelab-kube-state-metrics
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-kube-state-metrics
     targetRevision: HEAD
     path: manifests
   destination:

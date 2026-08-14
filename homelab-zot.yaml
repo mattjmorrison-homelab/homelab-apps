@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison/homelab-zot
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-zot
     targetRevision: HEAD
     path: manifests
   destination:

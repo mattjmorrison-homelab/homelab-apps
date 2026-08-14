@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison/homelab-cert-manager-config
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-cert-manager-config
     targetRevision: HEAD
     path: manifests
   destination:

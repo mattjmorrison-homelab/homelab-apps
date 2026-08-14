@@ -12,7 +12,7 @@ spec:
       helm:
         valueFiles:
           - $values/values.yaml
-    - repoURL: https://github.com/mattjmorrison/homelab-openbao
+    - repoURL: https://github.com/mattjmorrison-homelab/homelab-openbao
       targetRevision: HEAD
       ref: values
   destination:

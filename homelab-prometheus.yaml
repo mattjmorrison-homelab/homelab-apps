@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison/homelab-prometheus
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-prometheus
     targetRevision: HEAD
     path: manifests
   destination:

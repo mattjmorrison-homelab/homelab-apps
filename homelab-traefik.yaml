@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison/homelab-traefik
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-traefik
     targetRevision: HEAD
     path: manifests
   destination:

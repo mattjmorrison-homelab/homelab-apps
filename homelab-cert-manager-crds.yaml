@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison/homelab-cert-manager-crds
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-cert-manager-crds
     targetRevision: HEAD
     path: .
   destination:

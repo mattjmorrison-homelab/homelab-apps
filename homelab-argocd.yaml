@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison/homelab-argocd
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-argocd
     targetRevision: HEAD
     path: manifests
   destination:

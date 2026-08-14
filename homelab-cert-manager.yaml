@@ -12,7 +12,7 @@ spec:
       helm:
         valueFiles:
           - $values/values.yaml
-    - repoURL: https://github.com/mattjmorrison/homelab-cert-manager
+    - repoURL: https://github.com/mattjmorrison-homelab/homelab-cert-manager
       targetRevision: HEAD
       ref: values
   destination:

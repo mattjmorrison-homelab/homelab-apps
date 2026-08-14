@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/mattjmorrison/homelab-alertmanager
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-alertmanager
     targetRevision: HEAD
     path: manifests
   destination:
