@@ -1,0 +1,184 @@
+retryDefaults:
+  limit: 2
+  backoff:
+    duration: 5s
+    factor: 2
+    maxDuration: 30s
+
+apps:
+  - name: homelab-alertmanager
+    namespace: monitoring
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-alertmanager
+    path: manifests
+
+  - name: homelab-argocd-image-updater
+    namespace: argocd
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-argocd-image-updater
+    path: manifests
+
+  - name: homelab-argocd
+    namespace: argocd
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-argocd
+    path: manifests
+
+  - name: homelab-cert-manager-config
+    namespace: cert-manager
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-cert-manager-config
+    path: manifests
+    retry: false
+
+  - name: homelab-cert-manager-crds
+    namespace: cert-manager
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-cert-manager-crds
+    path: .
+    retry: false
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+
+  - name: homelab-cert-manager
+    namespace: cert-manager
+    syncOptions:
+      - CreateNamespace=true
+    sources:
+      - repoURL: https://charts.jetstack.io
+        chart: cert-manager
+        targetRevision: "*"
+        helm:
+          valueFiles:
+            - $values/values.yaml
+      - repoURL: https://github.com/mattjmorrison-homelab/homelab-cert-manager
+        targetRevision: HEAD
+        path: verify
+        ref: values
+
+  - name: homelab-cloudflare
+    namespace: cloudflare
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-cloudflare
+    path: manifests
+
+  - name: homelab-coredns
+    namespace: kube-system
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-coredns
+    path: manifests
+
+  - name: homelab-external-secrets-crds
+    namespace: external-secrets
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-external-secrets-crds
+    path: .
+    retry: false
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+
+  - name: homelab-external-secrets
+    namespace: external-secrets
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+    sources:
+      - repoURL: https://charts.external-secrets.io
+        chart: external-secrets
+        targetRevision: "*"
+        helm:
+          valueFiles:
+            - $values/values.yaml
+      - repoURL: https://github.com/mattjmorrison-homelab/homelab-external-secrets
+        targetRevision: HEAD
+        path: verify
+        ref: values
+
+  - name: homelab-grafana
+    namespace: monitoring
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-grafana
+    path: manifests
+
+  - name: homelab-graphql-router
+    namespace: graphql-router
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-graphql-router
+    path: manifests
+
+  - name: homelab-home-assistant
+    namespace: home-assistant
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-home-assistant
+    path: manifests
+
+  - name: homelab-homepage
+    namespace: homepage
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-homepage
+    path: manifests
+
+  - name: homelab-kube-state-metrics
+    namespace: monitoring
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-kube-state-metrics
+    path: manifests
+
+  - name: homelab-node-exporter
+    namespace: monitoring
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-node-exporter
+    path: manifests
+
+  - name: homelab-openbao
+    namespace: openbao
+    syncOptions:
+      - CreateNamespace=true
+    ignoreDifferences:
+      - group: admissionregistration.k8s.io
+        kind: MutatingWebhookConfiguration
+        jsonPointers:
+          - /webhooks/0/clientConfig/caBundle
+      - group: admissionregistration.k8s.io
+        kind: ValidatingWebhookConfiguration
+        jsonPointers:
+          - /webhooks/0/clientConfig/caBundle
+    sources:
+      - repoURL: https://openbao.github.io/openbao-helm
+        chart: openbao
+        targetRevision: "*"
+        helm:
+          valueFiles:
+            - $values/values.yaml
+      - repoURL: https://github.com/mattjmorrison-homelab/homelab-openbao
+        targetRevision: HEAD
+        path: verify
+        ref: values
+
+  - name: homelab-pihole
+    namespace: pihole
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-pihole
+    path: manifests
+
+  - name: homelab-prometheus
+    namespace: monitoring
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-prometheus
+    path: manifests
+
+  - name: homelab-speedtest-exporter
+    namespace: monitoring
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-speedtest-exporter
+    path: manifests
+
+  - name: homelab-traefik
+    namespace: kube-system
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-traefik
+    path: manifests
+
+  - name: homelab-woodpecker
+    namespace: woodpecker
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-woodpecker
+    path: manifests
+
+  - name: homelab-zot
+    namespace: zot
+    repoURL: https://github.com/mattjmorrison-homelab/homelab-zot
+    path: manifests
+
+  - name: homelab-hdmi-switch
+    namespace: hdmi-switch
+    repoURL: https://github.com/mattjmorrison-homelab/k8s-hdmi-switch
+    path: manifests
+
+  - name: k8s-matter-server
+    namespace: matter-server
+    repoURL: https://github.com/mattjmorrison-homelab/k8s-matter-server
+    path: manifests

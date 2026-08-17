@@ -1,0 +1,4 @@
+apiVersion: v2
+name: homelab-apps
+description: App-of-apps — one ArgoCD Application per deployed service
+version: 0.1.0
