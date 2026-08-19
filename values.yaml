@@ -93,9 +93,9 @@ apps:
     repoURL: https://github.com/mattjmorrison-homelab/homelab-grafana
     path: manifests
 
-  - name: homelab-graphql-router
+  - name: k8s-graphql-router
     namespace: graphql-router
-    repoURL: https://github.com/mattjmorrison-homelab/homelab-graphql-router
+    repoURL: https://github.com/mattjmorrison-homelab/k8s-graphql-router
     path: manifests
 
   - name: homelab-home-assistant
