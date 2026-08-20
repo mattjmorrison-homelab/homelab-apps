@@ -93,6 +93,11 @@ apps:
     repoURL: https://github.com/mattjmorrison-homelab/homelab-grafana
     path: manifests
 
+  - name: k8s-garage
+    namespace: garage
+    repoURL: https://github.com/mattjmorrison-homelab/k8s-garage
+    path: manifests
+
   - name: k8s-graphql-router
     namespace: graphql-router
     repoURL: https://github.com/mattjmorrison-homelab/k8s-graphql-router
