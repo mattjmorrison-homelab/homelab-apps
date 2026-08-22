@@ -179,31 +179,6 @@ apps:
     repoURL: https://github.com/mattjmorrison-homelab/homelab-node-exporter
     path: manifests
 
-  - name: homelab-openbao
-    namespace: openbao
-    syncOptions:
-      - CreateNamespace=true
-    ignoreDifferences:
-      - group: admissionregistration.k8s.io
-        kind: MutatingWebhookConfiguration
-        jsonPointers:
-          - /webhooks/0/clientConfig/caBundle
-      - group: admissionregistration.k8s.io
-        kind: ValidatingWebhookConfiguration
-        jsonPointers:
-          - /webhooks/0/clientConfig/caBundle
-    sources:
-      - repoURL: https://openbao.github.io/openbao-helm
-        chart: openbao
-        targetRevision: "*"
-        helm:
-          valueFiles:
-            - $values/values.yaml
-      - repoURL: https://github.com/mattjmorrison-homelab/homelab-openbao
-        targetRevision: HEAD
-        path: verify
-        ref: values
-
   - name: k8s-openbao
     namespace: openbao
     syncOptions:
