@@ -59,8 +59,16 @@ apps:
 
   - name: homelab-coredns
     namespace: kube-system
-    repoURL: https://github.com/mattjmorrison-homelab/homelab-coredns
-    path: manifests
+    sources:
+      - repoURL: https://github.com/mattjmorrison-homelab/homelab-coredns
+        targetRevision: HEAD
+        path: manifests
+        helm:
+          valueFiles:
+            - $network/local-hosts.yaml
+      - repoURL: https://github.com/mattjmorrison-homelab/admin-network
+        targetRevision: HEAD
+        ref: network
 
   - name: homelab-external-secrets-crds
     namespace: external-secrets
@@ -207,8 +215,17 @@ apps:
 
   - name: homelab-pihole
     namespace: pihole
-    repoURL: https://github.com/mattjmorrison-homelab/homelab-pihole
-    path: manifests
+    sources:
+      - repoURL: https://github.com/mattjmorrison-homelab/homelab-pihole
+        targetRevision: HEAD
+        path: manifests
+        helm:
+          valueFiles:
+            - $network/local-hosts.yaml
+            - $network/ingress-hosts.yaml
+      - repoURL: https://github.com/mattjmorrison-homelab/admin-network
+        targetRevision: HEAD
+        ref: network
 
   - name: homelab-prometheus
     namespace: monitoring
