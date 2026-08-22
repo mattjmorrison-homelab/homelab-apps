@@ -197,7 +197,7 @@ apps:
         chart: openbao
         targetRevision: "*"
         helm:
-          releaseName: homelab-openbao
+          releaseName: k8s-openbao
           valueFiles:
             - $values/values.yaml
       - repoURL: https://github.com/mattjmorrison-homelab/k8s-openbao
