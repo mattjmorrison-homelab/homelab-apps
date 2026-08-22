@@ -109,6 +109,7 @@ apps:
     namespace: github-runner
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
     sources:
       - repoURL: ghcr.io/actions/actions-runner-controller-charts
         chart: gha-runner-scale-set-controller
