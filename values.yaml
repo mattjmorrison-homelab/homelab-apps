@@ -98,6 +98,61 @@ apps:
     repoURL: https://github.com/mattjmorrison-homelab/k8s-garage
     path: manifests
 
+  - name: k8s-github-runner
+    namespace: github-runner
+    repoURL: https://github.com/mattjmorrison-homelab/k8s-github-runner
+    path: manifests
+    syncOptions:
+      - CreateNamespace=true
+
+  - name: k8s-github-runner-controller
+    namespace: github-runner
+    syncOptions:
+      - CreateNamespace=true
+    sources:
+      - repoURL: ghcr.io/actions/actions-runner-controller-charts
+        chart: gha-runner-scale-set-controller
+        targetRevision: "*"
+        helm:
+          valueFiles:
+            - $values/values-controller.yaml
+      - repoURL: https://github.com/mattjmorrison-homelab/k8s-github-runner
+        targetRevision: HEAD
+        path: .
+        ref: values
+
+  - name: k8s-github-runner-amd64
+    namespace: github-runner
+    syncOptions:
+      - CreateNamespace=true
+    sources:
+      - repoURL: ghcr.io/actions/actions-runner-controller-charts
+        chart: gha-runner-scale-set
+        targetRevision: "*"
+        helm:
+          valueFiles:
+            - $values/values-runner-amd64.yaml
+      - repoURL: https://github.com/mattjmorrison-homelab/k8s-github-runner
+        targetRevision: HEAD
+        path: .
+        ref: values
+
+  - name: k8s-github-runner-arm64
+    namespace: github-runner
+    syncOptions:
+      - CreateNamespace=true
+    sources:
+      - repoURL: ghcr.io/actions/actions-runner-controller-charts
+        chart: gha-runner-scale-set
+        targetRevision: "*"
+        helm:
+          valueFiles:
+            - $values/values-runner-arm64.yaml
+      - repoURL: https://github.com/mattjmorrison-homelab/k8s-github-runner
+        targetRevision: HEAD
+        path: .
+        ref: values
+
   - name: k8s-graphql-router
     namespace: graphql-router
     repoURL: https://github.com/mattjmorrison-homelab/k8s-graphql-router
